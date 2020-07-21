@@ -1,0 +1,44 @@
+<%- include ('header')-%>
+
+<section class="contact-section">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-lg-6 p-0">
+        <br><br><br><br>
+        <img src="/assets/img/imageside.png" class="rounded" alt="...">
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="contact-warp">
+          <div class="section-title mb-0">
+            <h2>Creer un Compte</h2>
+            <p> Remplir le formulaire pour creer votre compte</p>
+          </div>
+
+          <form action="/inscription" method="POST" class="contact-from">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" name="name" required placeholder="Nom">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="prenom" required placeholder="Prenom">
+              </div>
+              <div class="col-md-12">
+                <input type="text" name="email" required placeholder="email">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="pwd" required placeholder="Password">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="pwd2" placeholder="Retype password">
+              </div>
+              <button class="site-btn">Inscription</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include ('footer')-%>

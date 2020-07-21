@@ -1,0 +1,37 @@
+<%- include ('header')-%>
+<div class=" mx-auto" style="max-width: 430px; margin-top:20px;">
+  <div class="card-body">
+    <div class="image">
+      <img src="/assets/img/annonce.png" alt="Appmusiclogo">
+    </div>			
+
+      
+  <h2 class="card-title mb-4"> Creer Votre Offre</h2>
+
+
+  <form action="/ajout" method="POST">
+       
+      <div class="form-group">
+        <label><strong>Le Titre de l'offre </strong></label>
+         <input name="titreoffre" class="form-control" placeholder="Ex:Recherche Musicien" type="text">
+      </div> 
+      <div class="form-group">
+        <label><strong>Description </strong></label>
+        <input name="description" class="form-control" placeholder="Ex: Besoin d'un pianiste pour une chancon" type="text">
+      </div> 
+      
+      <div class="form-group">
+        <label><strong>Budget en Us </strong></label>
+        <input name="budget" class="form-control" placeholder="Ex: 200$" type="text">
+      </div> 
+  
+      <div class="form-group">
+        <button class="btn btn-danger btn-block">Creer</button>
+
+      </div> 
+  </form>      
+  </div> 
+</div>
+<br><br>
+
+<%- include ('footer')-%>
