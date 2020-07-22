@@ -1,37 +1,153 @@
 <%- include ('header')-%>
-<div class=" mx-auto" style="max-width: 430px; margin-top:20px;">
+
+<% if(locals.ajouttype){ if(ajouttype=="offre"){%>
+  <div class=" mx-auto" style="max-width: 430px; margin-top:20px;">
   <div class="card-body">
     <div class="image">
       <img src="/assets/img/annonce.png" alt="Appmusiclogo">
     </div>			
-
-      
   <h2 class="card-title mb-4"> Creer Votre Offre</h2>
-
-
   <form action="/ajout" method="POST">
-       
       <div class="form-group">
         <label><strong>Le Titre de l'offre </strong></label>
-         <input name="titreoffre" class="form-control" placeholder="Ex:Recherche Musicien" type="text">
+          <input name="titreoffre" class="form-control" placeholder="Ex:Recherche Musicien" type="text">
       </div> 
       <div class="form-group">
         <label><strong>Description </strong></label>
         <input name="description" class="form-control" placeholder="Ex: Besoin d'un pianiste pour une chancon" type="text">
       </div> 
-      
-      <div class="form-group">
+      <input type="hidden" id="type" name="type" value="offre">      <div class="form-group">
         <label><strong>Budget en Us </strong></label>
         <input name="budget" class="form-control" placeholder="Ex: 200$" type="text">
       </div> 
-  
+
       <div class="form-group">
         <button class="btn btn-danger btn-block">Creer</button>
 
       </div> 
   </form>      
   </div> 
+  </div>
+<%}} if(locals.ajouttype){ if(ajouttype=="projet"){ %>
+<div class="container-fluide">
+  <div class="row">
+    <div class="col-lg-4 col-sm-12">
+      <br><br><br>
+      <header style="color: rgb(7, 0, 49);;"  class="mb-4">
+        <h1> <strong> Projet </strong> </h1>
+      </header>
+      <form>
+        <div class="col form-group">
+          <input type="text" class="form-control" placeholder="Title">
+        </div>
+        <div class="col form-group">
+          <input type="text" class="form-control" placeholder="Version Title">
+        </div>
+        <div class="col form-group">
+          <input type="text" class="form-control" placeholder="Description">
+        </div>
+        <div class="col form-group">
+          <div class="container">
+            <label>Contributeurs</label>
+            <div class="btn btn-warning "><i class="fa fa-plus" aria-hidden="true"></i> <strong>  Ajouter </strong> </div>
+          </div>
+        </div>
+        <div class="col form-group">
+          <button type="submit" style="background-color: crimson; color: white;" class="btn btn-block"> Register </button>
+        </div> <!-- form-group// -->
+      </form>
+      <br><br><br>
+    </div>
+    <div class="col-lg-8 col-sm-12 text-center " style="background-image: url('/assets/img/studio2.jpg') ; background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover ;">
+      <br><br><br><br><br><br>
+
+    </div>
+  </div>
 </div>
-<br><br>
+<%}} if(locals.ajouttype){ if(ajouttype=="son"){%>
+<div class="container-fluide">
+  <div class="row">
+    
+    <div class="col-lg-8 col-sm-12 text-center " style="background-image: url('/assets/img/sound.jpg') ; background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover ;"></div>
+    <div class="col-lg-4 col-sm-12">
+      <div class="container">
+        <article class="card-body"></article>
+          <header class="mb-4">
+            <h1>Sound</h1>
+          </header>
+          <form class="form">
+            <div class="col form-group">
+              <input type="text" class="form-control" placeholder="Nom">
+            </div>
+            <div class="col form-group">
+              <input type="text" class="form-control" placeholder="Description">
+            </div>
+            <div class="col form-group">
+              <label for="myfile">Selectionner votre Son</label>
+              <input type="file" id="myfile" name="myfile">
+            </div>
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-danger btn-block"> Register </button>
+            </div> <!-- form-group// -->
+
+          </form>
+        </article> <!-- card-body end .// -->
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+<%}} if(locals.ajouttype){ if(ajouttype=="track") {%>
+<div class="container-fluide">
+  <div class="row">
+    <div class="col-lg-4 col-sm-12">
+      <div class="container">
+        <article class="card-body"></article>
+          <header class="mb-4">
+            <h1>Track</h1>
+          </header>
+          <form class="form">
+            <div class="col form-group">
+              <input type="text" class="form-control" placeholder="Nom">
+            </div>
+            <div class="col form-group">
+              <input type="text" class="form-control" placeholder="Description">
+            </div>
+            <div class="col form-group">
+              <label for="myfile">Selectionner votre Son</label>
+              <input type="file" id="myfile" name="myfile">
+            </div>
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-danger btn-block"> Register </button>
+            </div> <!-- form-group// -->
+
+          </form>
+        </article> <!-- card-body end .// -->
+      </div>
+    </div>
+    <div class="col-lg-8 col-sm-12 text-center " style="background-image: url('/assets/img/track.jpg') ; background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover ;"></div>
+  </div>
+</div>
+<%}}%>
+
+
+
+
+
+
+
+
+
+
+
 
 <%- include ('footer')-%>

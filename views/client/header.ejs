@@ -39,23 +39,19 @@
 		<a href="/">
 			<img src="/assets/img/logo.png" width="" alt="Appmusiclogo">
 		</a>
-		<div class="header-right">
-			<div class="user-panel">
-				<% if (locals.user){%>
-					<span>|</span>
-					<span class="register"> Hello<strong> <%= user.prenom %></span></a>
-				<%}else{%>
-				<a href="/connection" class="login">Connecter</a><span>|</span>
-				<a href="/inscription" class="register"><strong> Creer un Compte</strong></a>
-				<%}%>
-				
-				<a href="/dashboard" class="register"><strong> Dashboard </strong></a>
-			</div>
-		</div>
 		<ul class="main-menu">
 			<li><a href="/">Acceuil</a></li>
 			<li><a href="/offres">offres</a></li>
 			<li><a href="/market">Market Place</a></li>
 			<li><a href="/contact">Contact</a></li>
+			<% if (locals.user){%>
+			<li><a href="/dashboard"><span> Hello<strong> <%= user.prenom %></span></a> </li>
+			<li><a href="/deconnection"><strong> Deconnection </strong></a> </li>
+			<%}else{%>
+			<li><a href="/connection">Connecter</a></li>
+			<li><a href="/inscription"><strong> Creer un Compte</strong></a> </li>
+			<%}%>
+
+
 		</ul>
 	</header>

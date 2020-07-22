@@ -7,6 +7,8 @@ const nodemailer= require('nodemailer')
 const date= require('date-and-time')
 var ObjectId = require('mongodb').ObjectID;
 const Users= require('./models/user')
+const Offres= require('./models/offre')
+
 
 
 
@@ -93,19 +95,44 @@ app.get('/connection',(req,response)=>{
 
 });
 app.get('/dashboard',(req,response)=>{
+    var useroffre=[]
     if (req.session.user){
-        response.render('client/dashboard',{user:req.session.user})
+        Offres.find()
+        .select()
+        .exec()
+        .then( docs=>{
+            for (i=0; i< docs.length; i++){
+                if(docs[i].userId==req.session.user._id){
+                    useroffre[useroffre.length+1]=docs[i]
+                } 
+            }
+        })
+        .then(()=>{
+            response.render('client/dashboard',{user:req.session.user, useroffre:useroffre})
+        })
+        .catch( err=>{
+            console.log(err)
+        });
+
     }else{
         response.render('client/connection')
     }
 });
 
 app.get('/offres',(req,response)=>{
-    if(req.session.user){
-        response.render('client/offres',{user:req.session.user})
-    }else{
-        response.render('client/offres')
-    }
+    Offres.find()
+    .select()
+    .exec()
+    .then((docs)=>{
+        if(req.session.user){
+            response.render('client/offres',{user:req.session.user, useroffre:docs.reverse()})
+        }else{
+            response.render('client/offres',{useroffre:docs.reverse()})
+        }
+    })
+    .catch( err=>{
+        console.log(err)
+    });
 });
 
 app.get('/contact',(req,response)=>{
@@ -141,12 +168,93 @@ app.get('/detailproduit',(req,response)=>{
 });
 
 app.get('/ajout',(req,response)=>{
+
     if(req.session.user){
-        response.render('client/ajout',{user:req.session.user})
+        if(req.query.var=="projet"){
+            response.render('client/ajout',{user:req.session.user, ajouttype:"projet"})
+        }else if(req.query.var=="offre"){
+            response.render('client/ajout',{user:req.session.user, ajouttype:"offre"})
+        } else if (req.query.var=="son"){
+            response.render('client/ajout',{user:req.session.user, ajouttype:"son"})
+        }else{
+            response.render('client/ajout',{user:req.session.user, ajouttype:"track"})
+        }
     }else{
-        response.render('client/ajout')
+        response.render('client/connection')
     }
 });
+
+app.post('/ajout',(req,res)=>{
+    if(req.body.type=="offre"){
+        const offre = new Offres({
+            _id : new mongoose.Types.ObjectId,
+            titre : req.body.titreoffre,
+            description: req.body.description,
+            budget: req.body.budget,
+            userId: req.session.user._id
+        });
+        offre.save()
+        .then(()=>{
+            res.redirect('/dashboard')
+        })
+        .catch(err=>{
+            res.send(err);
+        });
+
+    }else if(req.body.type=="son"){
+        const offre = new Offres({
+            _id : new mongoose.Types.ObjectId,
+            titre : req.body.titreoffre,
+            description: req.body.description,
+            budget: req.body.budget,
+            userId: req.session.user._id
+        });
+        offre.save()
+        .then(()=>{
+            res.redirect('/dashboard')
+        })
+        .catch(err=>{
+            res.send(err);
+        });
+
+    }else if(req.body.type=="track"){
+        const offre = new Offres({
+            _id : new mongoose.Types.ObjectId,
+            titre : req.body.titreoffre,
+            description: req.body.description,
+            budget: req.body.budget,
+            userId: req.session.user._id
+        });
+        offre.save()
+        .then(()=>{
+            res.redirect('/dashboard')
+        })
+        .catch(err=>{
+            res.send(err);
+        });
+
+    }else{
+
+        const offre = new Offres({
+            _id : new mongoose.Types.ObjectId,
+            titre : req.body.titreoffre,
+            description: req.body.description,
+            budget: req.body.budget,
+            userId: req.session.user._id
+        });
+        offre.save()
+        .then(()=>{
+            res.redirect('/dashboard')
+        })
+        .catch(err=>{
+            res.send(err);
+        });
+    }
+    
+
+    
+});
+
 app.get('/market',(req,response)=>{
     if(req.session.user){
         response.render('client/market',{user:req.session.user})
@@ -174,7 +282,7 @@ app.post('/connection', (req,res)=>{
     })
     .then(()=>{
         if(req.session.user){
-            res.render('client/dashboard', {user:req.session.user})
+            res.redirect('client/dashboard')
         }else{
             
         }

@@ -14,42 +14,18 @@
         </ul>
       </div>
       <div class="row playlist-area">
+        <% if(locals.useroffre){
+          useroffre.forEach(function (useroffres){ %>
         <div class="mix col-lg-3 col-md-4 col-sm-6 chere">
-          <div class="playlist-item">
+          <div class="card playlist-item">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p> <strong>Price :</strong> $50 </p><a href="#" class="card-link site-btn">Card link</a> 
+              <h5 class="card-title"><%= useroffres.titre %></h5>
+              <p class="card-text"><%= useroffres.description %> </p>
+              <p> <strong>Budget :</strong> <%= useroffres.budget %> </p><a href="/offre/<%= useroffres._id %>" class="btn btn-warning">Voir</a> 
             </div>
           </div>
         </div>
-        <div class="mix col-lg-3 col-md-4 col-sm-6 recent">
-          <div class="playlist-item">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <p> <strong>Price :</strong> $50 </p><a href="#" class="card-link site-btn">Card link</a>
-            </div>
-          </div>
-        </div>
-        <div class="mix col-lg-3 col-md-4 col-sm-6 chere">
-          <div class="playlist-item">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p> <strong>Price :</strong> $50 </p><a href="#" class="card-link site-btn">Card link</a> 
-            </div>
-          </div>
-        </div>
-        <div class="mix col-lg-3 col-md-4 col-sm-6 recent">
-          <div class="playlist-item">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <p> <strong>Price :</strong> $50 </p><a href="#" class="card-link site-btn">Card link</a>
-            </div>
-          </div>
-        </div>
+        <%})} %>
         
         
       </div>
