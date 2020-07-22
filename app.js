@@ -262,6 +262,13 @@ app.get('/market',(req,response)=>{
         response.render('client/market')
     }
 });
+app.get('/workingpage',(req,response)=>{
+    if(req.session.user){
+        response.render('client/workingpage',{user:req.session.user})
+    }else{
+        response.render('client/workingpage')
+    }
+});
 
 
 
@@ -299,6 +306,9 @@ app.get('/deconnection',(req,response)=>{
     if (req.session.user){
         req.session.user=null
         response.redirect('/')
+    }else{
+        response.redirect('/')
+
     }
 });
 

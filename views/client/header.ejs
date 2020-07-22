@@ -35,21 +35,21 @@
 		<div class="loader"></div>
 	</div>
 	
-	<header class="header-section clearfix">
+	<header style="padding: 10px;"class="header-section clearfix">
 		<a href="/">
-			<img src="/assets/img/logo.png" width="" alt="Appmusiclogo">
+			<img src="/assets/img/logo.png" width="100px" alt="Appmusiclogo">
 		</a>
 		<ul class="main-menu">
-			<li><a href="/">Acceuil</a></li>
-			<li><a href="/offres">offres</a></li>
-			<li><a href="/market">Market Place</a></li>
-			<li><a href="/contact">Contact</a></li>
+			<li><a href="/"><strong>Acceuil </strong></a></li>
+			<li><a href="/offres"> <strong>Affres</strong> </a></li>
+			<li><a href="/market"> <strong>Market Place</strong> </a></li>
+			<li><a href="/contact"> <strong>Contact</strong></a></li>
 			<% if (locals.user){%>
 			<li><a href="/dashboard"><span> Hello<strong> <%= user.prenom %></span></a> </li>
 			<li><a href="/deconnection"><strong> Deconnection </strong></a> </li>
 			<%}else{%>
-			<li><a href="/connection">Connecter</a></li>
-			<li><a href="/inscription"><strong> Creer un Compte</strong></a> </li>
+			<li><a href="/connection" style="color: crimson;"><strong>Connecter</strong></a></li>
+			<li><a href="/inscription" style="color:darkmagenta;"><strong> Creer un Compte</strong></a> </li>
 			<%}%>
 
 

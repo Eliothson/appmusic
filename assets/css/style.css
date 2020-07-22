@@ -18,6 +18,7 @@ body {
 	font-family: "Montserrat", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	background-color: #f6f8ee;
 }
 
 h1,
@@ -223,7 +224,7 @@ Header section
 .header-section {
 	padding-left: 55px;
 	padding-right: 72px;
-	background: #08192d;
+	background:white;
 }
 
 .site-logo {
@@ -277,7 +278,7 @@ Header section
 .main-menu li a {
 	display: block;
 	font-size: 16px;
-	color: #ffffff;
+	color: #d89505;
 	padding: 44px 10px;
 	margin-left: 60px;
 }
